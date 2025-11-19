@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>DCI — Death Code Indicator Test (12문항)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {font-family:'Noto Sans KR',sans-serif;background:#f4f7f9;margin:0;padding:0;color:#333;}
+.container {max-width:750px;margin:30px auto;padding:20px;background:white;
+    border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,0.1);}
+h1 {text-align:center;color:#2c466f;margin-bottom:5px;}
+h2 {text-align:center;color:#6581a3;font-size:18px;margin-top:0;margin-bottom:30px;}
+.question {background:#eef3f7;padding:18px;margin-bottom:15px;border-radius:12px;
+    font-size:15px;line-height:1.5;}
+.question-title {font-weight:bold;margin-bottom:10px;color:#2b3a55;}
+.answer {margin-left:10px;margin-top:5px;}
+button {width:100%;background:#2c466f;color:white;border:none;padding:15px;border-radius:10px;
+    font-size:18px;cursor:pointer;margin-top:20px;}
+button:hover {background:#213755;}
+#result-box {display:none;margin-top:25px;padding:20px;background:#eaf2ff;border-radius:12px;line-height:1.6;}
+#result-title {font-size:22px;color:#2c466f;font-weight:bold;text-align:center;margin-bottom:15px;}
+#result-text {font-size:17px;text-align:center;font-weight:bold;}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>DCI — Death Code Indicator</h1>
+<h2>나의 죽음 가치관 유형 테스트 (12문항)</h2>
+
+<form id="dciForm">
+
+<div class="question">
+    <div class="question-title">1. 위급 상황에서 가능한 모든 소생술을 받고 싶다.</div>
+    <label class="answer"><input type="radio" name="q1" value="R"> YES</label><br>
+    <label class="answer"><input type="radio" name="q1" value="N"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">2. 임종이 가까워도 생명 연장이 최우선이다.</div>
+    <label class="answer"><input type="radio" name="q2" value="R"> YES</label><br>
+    <label class="answer"><input type="radio" name="q2" value="N"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">3. 심정지 시 소생술 대신 자연사 방식을 선호한다.</div>
+    <label class="answer"><input type="radio" name="q3" value="N"> YES</label><br>
+    <label class="answer"><input type="radio" name="q3" value="R"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">4. 치료보다 고통·불안 등 증상 완화를 더 중요하게 생각한다.</div>
+    <label class="answer"><input type="radio" name="q4" value="S"> YES</label><br>
+    <label class="answer"><input type="radio" name="q4" value="L"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">5. 힘들어도 생명 연장을 위한 치료를 중단하고 싶지 않다.</div>
+    <label class="answer"><input type="radio" name="q5" value="L"> YES</label><br>
+    <label class="answer"><input type="radio" name="q5" value="S"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">6. 삶의 질이 크게 떨어진다면 치료보다 편안함이 필요하다.</div>
+    <label class="answer"><input type="radio" name="q6" value="S"> YES</label><br>
+    <label class="answer"><input type="radio" name="q6" value="L"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">7. 죽음 이후 장기기증을 하고 싶다.</div>
+    <label class="answer"><input type="radio" name="q7" value="O"> YES</label><br>
+    <label class="answer"><input type="radio" name="q7" value="B"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">8. 신체 온전 보존이 장기기증보다 더 중요하다.</div>
+    <label class="answer"><input type="radio" name="q8" value="B"> YES</label><br>
+    <label class="answer"><input type="radio" name="q8" value="O"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">9. 전통 장례·신체 보존을 더 선호한다.</div>
+    <label class="answer"><input type="radio" name="q9" value="B"> YES</label><br>
+    <label class="answer"><input type="radio" name="q9" value="O"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">10. 임종 준비 시 감정을 적극적으로 표현하는 편이다.</div>
+    <label class="answer"><input type="radio" name="q10" value="E"> YES</label><br>
+    <label class="answer"><input type="radio" name="q10" value="D"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">11. 죽음에 대해 조용하고 내면적으로 받아들이는 편이다.</div>
+    <label class="answer"><input type="radio" name="q11" value="D"> YES</label><br>
+    <label class="answer"><input type="radio" name="q11" value="E"> NO</label>
+</div>
+
+<div class="question">
+    <div class="question-title">12. 유언·작별 준비 등을 적극적으로 실행하고 싶다.</div>
+    <label class="answer"><input type="radio" name="q12" value="E"> YES</label><br>
+    <label class="answer"><input type="radio" name="q12" value="D"> NO</label>
+</div>
+
+<button type="button" onclick="calculateDCI()">결과 보기</button>
+</form>
+
+<div id="result-box">
+    <div id="result-title">나의 DCI 유형</div>
+    <div id="result-text"></div>
+</div>
+</div>
+
+<script>
+function calculateDCI() {
+    const form = document.forms['dciForm'];
+    let result = [];
+
+    for (let i = 1; i <= 12; i++) {
+        const val = form['q'+i].value;
+        if (!val) { alert(i + "번 문항을 선택해주세요."); return; }
+        result.push(val);
+    }
+
+    const count = code => result.filter(v => v === code).length;
+
+    const final =
+        (count("R") >= count("N") ? "R" : "N") + " - " +
+        (count("S") >= count("L") ? "S" : "L") + " - " +
+        (count("O") >= count("B") ? "O" : "B") + " - " +
+        (count("E") >= count("D") ? "E" : "D");
+
+    document.getElementById("result-box").style.display = "block";
+    document.getElementById("result-text").innerText = final;
+}
+</script>
+
+</body>
+</html>
